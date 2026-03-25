@@ -1,0 +1,39 @@
+/* Minimal theme variables to satisfy auth-shared.css */
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+
+  --color-bg: #f7f7fb;
+  /* --color-surface: #ffffff; */
+  --color-surface: #0a0a0a;
+  --color-surface-alt: #f1f3f5;
+  --color-border: #e6e9ef;
+  --color-text: #0f172a;
+  --color-text-secondary: #475569;
+  --color-accent: #0066ff;
+  --color-accent-hover: #0050d4;
+
+  --shadow-md: 0 6px 18px rgba(13, 38, 76, 0.08);
+  --transition-base: 180ms ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #071023;
+    --color-surface: #071428;
+    --color-surface-alt: #04101a;
+    --color-border: #10263a;
+    --color-text: #e6eef8;
+    --color-text-secondary: #94a3b8;
+    --color-accent: #4c9fff;
+    --color-accent-hover: #2b86ff;
+    --shadow-md: 0 6px 18px rgba(0,0,0,0.6);
+  }
+}
