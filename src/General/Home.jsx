@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import '../styles/reels.css'
 import ReelFeed from '../components/ReelFeed'
+import { API_BASE_URL } from '../config/api'
 
 
 const Home = () => {
@@ -10,7 +11,7 @@ const Home = () => {
     
     useEffect(() => {
         console.log("Home component mounted, fetching videos...")
-        axios.get("http://localhost:5000/api/food/all", { withCredentials: true })
+        axios.get(`${API_BASE_URL}/api/food/all`, { withCredentials: true })
             .then(response => {
                 console.log("API response:", response.data)
                 // The API returns data in response.data.data, not response.data.foodItems
@@ -33,7 +34,7 @@ const Home = () => {
     
     async function likeVideo(item) {
         try {
-            const response = await axios.post("http://localhost:5000/api/food/like", { foodId: item._id }, {withCredentials: true})
+            const response = await axios.post(`${API_BASE_URL}/api/food/like`, { foodId: item._id }, {withCredentials: true})
 
             if(response.data.liked){
                 console.log("Video liked");
@@ -55,7 +56,7 @@ const Home = () => {
 
     async function saveVideo(item) {
         try {
-            const response = await axios.post("http://localhost:5000/api/food/save", { foodId: item._id }, { withCredentials: true })
+            const response = await axios.post(`${API_BASE_URL}/api/food/save`, { foodId: item._id }, { withCredentials: true })
             
             if(response.data.saved){
                 console.log("Video saved");

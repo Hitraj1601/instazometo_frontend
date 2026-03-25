@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import '../styles/reels.css';
 import axios from 'axios';
 import ReelFeed from '../components/ReelFeed';
+import { API_BASE_URL } from '../config/api';
 
 const Saved = () => {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/api/food/save', { withCredentials: true })
+      .get(`${API_BASE_URL}/api/food/save`, { withCredentials: true })
       .then((response) => {
         const savedFoods = response.data.savedFoods
           .filter((item) => item?.food && item.food._id) // ✅ Filter out null or malformed entries
@@ -32,7 +33,7 @@ const Saved = () => {
   const removeSaved = async (item) => {
     try {
       const response = await axios.post(
-        'http://localhost:5000/api/food/save',
+        `${API_BASE_URL}/api/food/save`,
         { foodId: item._id },
         { withCredentials: true }
       );
@@ -58,7 +59,7 @@ const Saved = () => {
   const handleLike = async (item) => {
     try {
       const response = await axios.post(
-        'http://localhost:5000/api/food/like',
+        `${API_BASE_URL}/api/food/like`,
         { foodId: item._id },
         { withCredentials: true }
       );

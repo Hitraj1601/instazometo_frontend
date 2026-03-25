@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import '../../styles/profile.css'
 import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { API_BASE_URL } from '../../config/api'
 
 const Profile = () => {
     const { id } = useParams()
@@ -10,7 +11,7 @@ const Profile = () => {
     const [videos, setVideos] = useState([])
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/api/food-partner/${id}`, { withCredentials: true })
+        axios.get(`${API_BASE_URL}/api/food-partner/${id}`, { withCredentials: true })
             .then(response => {
                 setProfile(response.data.foodPartner)
                 setVideos(response.data.foodPartner.foodItems)
